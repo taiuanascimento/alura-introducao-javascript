@@ -34,10 +34,15 @@ for (var i = 0; i < pacientes.length; i++) {
     }
 
     if (pesoValido && alturaValida) {
-        var imc = peso / (altura * altura);
-        tdImc.textContent = imc.toFixed(2);
+        var imc = calculaImc(peso, altura);
+        tdImc.textContent = imc;
     } else {
         alert("O paciente " + nome + ", está com altura e/ou peso inválido.");
         trPaciente.classList.add("paciente-invalido")
     }
+}
+
+function calculaImc(peso, altura){
+    var imc = peso / Math.pow(altura, 2);
+    return imc.toFixed(2);
 }
